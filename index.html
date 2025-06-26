@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Celenia Systems - Soluciones Tecnológicas Personalizadas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8; /* Light gray background */
+        }
+        .header-bg {
+            background: linear-gradient(to right, #0A647B, #063B4B); /* New Blue gradient */
+        }
+        .btn-primary {
+            background-color: #063B4B; /* New Blue */
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        .btn-primary:hover {
+            background-color: #032B36; /* Darker new blue */
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+            transform: translateY(-2px);
+        }
+        .section-bg-gradient {
+            background: linear-gradient(to bottom, #ffffff, #f0f4f8); /* White to light gray gradient */
+        }
+        .card {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+        .text-gradient {
+            background: linear-gradient(to right, #0A647B, #063B4B);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .quiz-option input[type="radio"] {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #063B4B; /* New blue */
+            border-radius: 50%;
+            outline: none;
+            cursor: pointer;
+            position: relative;
+            vertical-align: middle;
+            margin-right: 8px;
+            display: inline-block;
+        }
+        .quiz-option input[type="radio"]:checked {
+            background-color: #063B4B; /* New blue */
+            border-color: #063B4B; /* New blue */
+        }
+        .quiz-option input[type="radio"]:checked::before {
+            content: '';
+            display: block;
+            width: 10px;
+            height: 10px;
+            background-color: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .quiz-option label {
+            cursor: pointer;
+            vertical-align: middle;
+        }
+        /* Custom new blue shades for Tailwind classes */
+        .bg-custom-dark-blue { background-color: #063B4B; }
+        .bg-custom-light-blue-gradient-start { background-color: #0A647B; }
+        .text-custom-dark-blue { color: #063B4B; }
+        .hover\:text-custom-light-blue:hover { color: #7F9CA6; }
+        .text-custom-light-blue { color: #7F9CA6; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header Section -->
+    <header class="header-bg text-white py-4 shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto flex justify-between items-center px-4">
+            <div class="flex items-center space-x-2">
+                <!-- Celenia Systems Logo Placeholder -->
+            <div align="center" class="mb-8">
+                <!-- Company logo -->
+                <img src="logo.png" alt="Celenia Systems" style="width: 200px; height: auto;">
+            </div>
+                <!--<span class="text-2xl font-bold">Celenia Systems</span>-->
+            </div>
+            <nav class="hidden md:flex space-x-6">
+                <a href="#inicio" class="hover:text-custom-light-blue transition duration-300">Inicio</a>
+                <a href="#nosotros" class="hover:text-custom-light-blue transition duration-300">Nosotros</a>
+                <a href="#servicios" class="hover:text-custom-light-blue transition duration-300">Servicios</a>
+                <a href="#tecnologias" class="hover:text-custom-light-blue transition duration-300">Tecnologías</a>
+                <a href="#proyectos" class="hover:text-custom-light-blue transition duration-300">Proyectos</a>
+                <a href="#nuestro-equipo" class="hover:text-custom-light-blue transition duration-300">Equipo</a>
+                <a href="#diagnostico-negocio" class="hover:text-custom-light-blue transition duration-300">Diagnóstico Negocio</a>
+                <a href="#diagnostico-comunicacion" class="hover:text-custom-light-blue transition duration-300">Diagnóstico Comunicación</a>
+                <a href="#contacto" class="hover:text-custom-light-blue transition duration-300">Contacto</a>
+            </nav>
+            <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+        </div>
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="md:hidden bg-custom-dark-blue mt-2 hidden">
+            <nav class="flex flex-col items-center py-2 space-y-2">
+                <a href="#inicio" class="block w-full text-center py-2 hover:bg-custom-light-blue-gradient-start transition duration-300">Inicio</a>
+                <a href="#nosotros" class="block w-full text-center py-2 hover:bg-custom-light-blue-gradient-start transition duration-300">Nosotros</a>
+                <a href="#servicios" class="block w-full text-center py-2 hover:bg-custom-light-blue-gradient-start transition duration-300">Servicios</a>
+                <a href="#tecnologias" class="block w-full text-center py-2 hover:bg-custom-light-blue-gradient-start transition duration-300">Tecnologías</a>
+                <a href="#proyectos" class="block w-full text-center py-2 hover:bg-custom-light-blue-gradient-start transition duration-300">Proyectos</a>
+                <a href="#nuestro-equipo" class="block w-full text-center py-2 hover:bg-custom-light-blue-gradient-start transition duration-300">Equipo</a>
+                <a href="#diagnostico-negocio" class="block w-full text-center py-2 hover:bg-custom-light-blue-gradient-start transition duration-300">Diagnóstico Negocio</a>
+                <a href="#diagnostico-comunicacion" class="block w-full text-center py-2 hover:bg-custom-light-blue-gradient-start transition duration-300">Diagnóstico Comunicación</a>
+                <a href="#contacto" class="block w-full text-center py-2 hover:bg-custom-light-blue-gradient-start transition duration-300">Contacto</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section style="background-color: #063B4B;" id="inicio" class="relative bg-gradient-to-r from-custom-light-blue-gradient-start to-custom-dark-blue text-white py-20 md:py-32 overflow-hidden">
+        <div class="absolute inset-0 z-0 opacity-20">
+            <!-- Background pattern or image placeholder -->
+            <svg class="w-full h-full" fill="currentColor" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <pattern id="pattern-circles" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                    <circle cx="10" cy="10" r="1.5" fill="white"/>
+                </pattern>
+                <rect x="0" y="0" width="100%" height="100%" fill="url(#pattern-circles)"/>
+            </svg>
+        </div>
+        <div class="container mx-auto px-4 relative z-10 text-center">
+            <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-6 animate-fade-in-up">
+                Impulsando tu Éxito con Soluciones Tecnológicas Personalizadas
+            </h1>
+            <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto animate-fade-in-up delay-200">
+                En Celenia Systems, creamos sistemas a medida que optimizan tu eficiencia operativa y te brindan una ventaja competitiva en diversas industrias.
+            </p>
+            <a href="#servicios" class="btn-primary inline-block text-lg font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition duration-300 animate-fade-in-up delay-400">
+                Explora Nuestros Servicios
+            </a>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="nosotros" class="py-16 md:py-24 section-bg-gradient">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">Acerca de Celenia Systems</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <p class="text-gray-700 text-lg leading-relaxed">
+                        Celenia Systems es un emprendimiento innovador que tiene como objetivo establecerse como una empresa líder en el desarrollo de sistemas personalizados. En un mundo donde la tecnología avanza a pasos agigantados, las empresas necesitan soluciones que se adapten a sus necesidades específicas.
+                    </p>
+                    <p class="text-gray-700 text-lg leading-relaxed">
+                        Nos proponemos ofrecer estas soluciones, mejorando la eficiencia operativa y la competitividad de las organizaciones en diversas industrias. Nuestro equipo está comprometido con la innovación y la transformación digital.
+                    </p>
+                </div>
+                <div class="flex justify-center items-center">
+                    <!-- [Image of Tecnologia y Negocios] -->
+                    <video width="600" style="display: inline-block; margin-right: 5px;" controls autoplay loop muted>
+                        <source src='11.mp4' type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+
+            <!-- Mission and Vision Sub-section -->
+            <div class="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8 text-center">
+                <div class="card p-6">
+                    <video width="400" style="display: inline-block; margin-right: 5px;" controls autoplay loop muted>
+                        <source src='14.mp4' type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <h3 class="text-2xl font-bold text-gradient mb-4">Nuestra Visión</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        Ser reconocidos como un referente en el desarrollo de sistemas personalizados en América Latina, impulsando la transformación digital de las empresas y contribuyendo al crecimiento sostenible de sus operaciones.
+                    </p>
+                </div>
+                <div class="card p-6">
+                    <video width="400" style="display: inline-block; margin-right: 5px;" controls autoplay loop muted>
+                        <source src='13.mp4' type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <h3 class="text-2xl font-bold text-gradient mb-4">Nuestra Misión</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        Proporcionar soluciones tecnológicas a medida que respondan a las necesidades específicas de nuestros clientes, mejorando su eficiencia operativa, la experiencia del usuario y la toma de decisiones informadas.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="servicios" class="py-16 md:py-24 bg-white">
+<div style="display: flex; justify-content: center; align-items: center;">
+    <video width="400" style="display: inline-block; margin-right: 5px;" controls autoplay loop muted>
+        <source src='12.mp4' type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</div>
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">Nuestros Servicios</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <!-- Service Card: Desarrollo de Página Web -->
+                <div class="card p-6 flex flex-col items-center text-center">
+                    <div class="text-custom-dark-blue mb-4">
+                        <svg class="w-16 h-16" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4 6h16v12H4V6zm16-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM12 11h-1c-.55 0-1 .45-1 1s.45 1 1 1h1v2H9V9h4c.55 0 1-.45 1-1s-.45-1-1-1h-2V5h2c.55 0 1-.45 1-1s-.45-1-1-1H9c-1.1 0-2 .9-2 2v2c0 1.1.9 2 2 2h3c.55 0 1-.45 1-1s-.45-1-1-1z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Desarrollo de Página Web</h3>
+                    <p class="text-gray-600 mb-4">
+                        Creamos páginas web atractivas, funcionales y optimizadas para mejorar tu presencia en línea.
+                    </p>
+                    <ul class="text-gray-600 text-sm text-left w-full space-y-1">
+                        <li>• Diseño responsivo (adaptable a dispositivos móviles)</li>
+                        <li>• Optimización SEO básica para mejorar el posicionamiento en buscadores</li>
+                        <li>• Integración de formularios de contacto y suscripción</li>
+                        <li>• Capacitación para la gestión de contenido</li>
+                        <li>• Enlaces a Redes Sociales (Instagram, TikTok, Facebook, X)</li>
+                        <li>• Opciones de Hosting: pago ($300 mensuales aprox.) o alternativo gratuito (Canva inicial)</li>
+                        <li>• Ventajas de Hosting: Dominio Personalizado, Correos Profesionales, Respaldos, Seguridad</li>
+                    </ul>
+                </div>
+
+                <!-- Service Card: Desarrollo de Sistema Personalizado -->
+                <div class="card p-6 flex flex-col items-center text-center">
+                    <div class="text-green-500 mb-4">
+                        <svg class="w-16 h-16" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-4.42 3.58-8 8-8s8 3.58 8 8c0 4.08-3.05 7.44-7 7.93V12h-1v7.93z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Desarrollo de Sistema Personalizado</h3>
+                    <p class="text-gray-600 mb-4">
+                        Implementamos sistemas a medida que se ajustan a tus necesidades específicas, optimizando procesos y facilitando la toma de decisiones.
+                    </p>
+                    <ul class="text-gray-600 text-sm text-left w-full space-y-1">
+                        <li>• Análisis detallado de requerimientos y diseño de la solución</li>
+                        <li>• Desarrollo de funcionalidades específicas (gestión de usuarios, reportes, inventario, etc.)</li>
+                        <li>• Mejora de eficiencia operativa y experiencia del usuario</li>
+                        <li>• Aumento de la ventaja competitiva en tu mercado</li>
+                        <li>• Soluciones escalables para el crecimiento de tu negocio</li>
+                    </ul>
+                </div>
+
+                <!-- Service Card: Hosting y Gestión de Infraestructura -->
+                <div class="card p-6 flex flex-col items-center text-center">
+                    <div class="text-purple-500 mb-4">
+                        <svg class="w-16 h-16" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M19 9h-2V7h-4V3H9v4H5v2H3v6h2v2h4v4h6v-4h4v-2h2V9h-2zm-6 8h-2v-4h2v4zM11 7H9V5h2v2zm6 0h-2V5h2v2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Gestión de Infraestructura y Soporte</h3>
+                    <p class="text-gray-600 mb-4">
+                        Ofrecemos soluciones de infraestructura y soporte técnico continuo para garantizar el rendimiento y la seguridad de tus sistemas.
+                    </p>
+                    <ul class="text-gray-600 text-sm text-left w-full space-y-1">
+                        <li>• Configuración y mantenimiento de infraestructura necesaria para sistemas</li>
+                        <li>• Instalación y soporte de equipos físicos para sistemas internos</li>
+                        <li>• Monitoreo proactivo y resolución de incidencias</li>
+                        <li>• Soporte técnico especializado y actualizaciones periódicas</li>
+                        <li>• Consultoría para optimización de recursos tecnológicos</li>
+                    </ul>
+                </div>
+
+                <!-- New Service Card: Planes de Marketing Digital y Gestión de Redes Sociales -->
+                <div class="card p-6 flex flex-col items-center text-center">
+                    <div class="text-red-500 mb-4">
+                        <svg class="w-16 h-16" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20 2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM7 7h3v3H7V7zm7 0h3v3h-3V7zm-7 7h3v3H7v-3zm7 0h3v3h-3v-3z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Marketing Digital y Redes Sociales</h3>
+                    <p class="text-gray-600 mb-4">
+                        Potenciamos tu marca en el entorno digital y conectamos con tu audiencia a través de estrategias de marketing y gestión de redes sociales.
+                    </p>
+                    <ul class="text-gray-600 text-sm text-left w-full space-y-1">
+                        <li>• Estrategias de contenido atractivo en plataformas clave</li>
+                        <li>• Optimización y publicidad (SEO y SEM)</li>
+                        <li>• Gestión de campañas en redes sociales (Instagram, TikTok, Facebook, X)</li>
+                        <li>• Mejora de visibilidad y aumento del tráfico web</li>
+                    </ul>
+                </div>
+
+                <!-- New Service Card: Cursos y Talleres (Presenciales y Virtuales) -->
+                <div class="card p-6 flex flex-col items-center text-center">
+                    <div class="text-yellow-500 mb-4">
+                        <svg class="w-16 h-16" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-1 15.93V13H9V9h2V7h2v2h2v4h-2v4.93z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Cursos y Talleres</h3>
+                    <p class="text-gray-600 mb-4">
+                        Capacitamos a tu equipo en las últimas tendencias de transformación digital a través de cursos y talleres interactivos.
+                    </p>
+                    <ul class="text-gray-600 text-sm text-left w-full space-y-1">
+                        <li>• Webinars y talleres presenciales y virtuales</li>
+                        <li>• Educación sobre la transformación digital empresarial</li>
+                        <li>• Contenido adaptado a las necesidades de tu equipo</li>
+                        <li>• Impulso del conocimiento y habilidades tecnológicas</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Primary Technologies Section (Tecnologías Principales) -->
+    <section id="tecnologias" class="py-16 md:py-24 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">Tecnologías Principales</h2>
+            <div class="flex flex-wrap justify-center gap-6 md:gap-8">
+                <div class="flex flex-col items-center p-4 bg-white rounded-lg shadow-md w-32 h-32 justify-center text-center">
+                    <img src="https://placehold.co/60x60/F0F4F8/3B82F6?text=PHP" alt="PHP Logo" class="h-16 mb-2">
+                    <span class="text-sm font-semibold text-gray-700">PHP</span>
+                </div>
+                <div class="flex flex-col items-center p-4 bg-white rounded-lg shadow-md w-32 h-32 justify-center text-center">
+                    <img src="https://placehold.co/60x60/F0F4F8/EF3B2D?text=Laravel" alt="Laravel Logo" class="h-16 mb-2">
+                    <span class="text-sm font-semibold text-gray-700">Laravel</span>
+                </div>
+                <div class="flex flex-col items-center p-4 bg-white rounded-lg shadow-md w-32 h-32 justify-center text-center">
+                    <img src="https://placehold.co/60x60/F0F4F8/4A8AF4?text=SQL" alt="SQL Logo" class="h-16 mb-2">
+                    <span class="text-sm font-semibold text-gray-700">Bases de Datos SQL</span>
+                </div>
+                <div class="flex flex-col items-center p-4 bg-white rounded-lg shadow-md w-32 h-32 justify-center text-center">
+                    <img src="https://placehold.co/60x60/F0F4F8/00758F?text=MySQL" alt="MySQL Logo" class="h-16 mb-2">
+                    <span class="text-sm font-semibold text-gray-700">MySQL</span>
+                </div>
+                <div class="flex flex-col items-center p-4 bg-white rounded-lg shadow-md w-32 h-32 justify-center text-center">
+                    <img src="https://placehold.co/60x60/F0F4F8/336791?text=PostgreSQL" alt="PostgreSQL Logo" class="h-16 mb-2">
+                    <span class="text-sm font-semibold text-gray-700">PostgreSQL</span>
+                </div>
+                <div class="flex flex-col items-center p-4 bg-white rounded-lg shadow-md w-32 h-32 justify-center text-center">
+                    <img src="https://placehold.co/60x60/F0F4F8/6B46C1?text=APIs" alt="APIs Logo" class="h-16 mb-2">
+                    <span class="text-sm font-semibold text-gray-700">Desarrollo de APIs</span>
+                </div>
+                <div class="flex flex-col items-center p-4 bg-white rounded-lg shadow-md w-32 h-32 justify-center text-center">
+                    <img src="https://placehold.co/60x60/F0F4F8/1DA1F2?text=Social" alt="Social Media Logo" class="h-16 mb-2">
+                    <span class="text-sm font-semibold text-gray-700">Gestión de Redes Sociales</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section (Por Qué Elegirnos) -->
+    <section id="por-que-elegirnos" class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">¿Por Qué Elegirnos?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+                <div class="card p-6">
+                    <div class="text-red-500 mb-4">
+                        <svg class="w-16 h-16 mx-auto" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Compromiso y Experiencia</h3>
+                    <p class="text-gray-600">
+                        Contamos con un equipo comprometido y con visión clara, preparado para ofrecer soluciones que impulsen el éxito de nuestros clientes.
+                    </p>
+                </div>
+                <div class="card p-6">
+                    <div class="text-yellow-500 mb-4">
+                        <svg class="w-16 h-16 mx-auto" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M17 1H7c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-2-2-2zm-2 20H9v-1h6v1zm-2-4h-2V5h2v12z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Innovación Constante</h3>
+                    <p class="text-gray-600">
+                        Emprendemos un viaje continuo hacia la innovación y la transformación digital, adaptándonos a las necesidades del mercado.
+                    </p>
+                </div>
+                <div class="card p-6">
+                    <div class="text-teal-500 mb-4">
+                        <svg class="w-16 h-16 mx-auto" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2c-4.97 0-9 4.03-9 9 0 3.39 1.86 6.36 4.66 7.92L12 22l5.34-3.08C20.14 17.36 22 14.39 22 11c0-4.97-4.03-9-9-9zm-1 15.93V13H9V9h2V7h2v2h2v4h-2v4.93z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Alianzas Estratégicas</h3>
+                    <p class="text-gray-600">
+                        Amplíamos nuestra red de negocios y oportunidades mediante colaboraciones con otras empresas tecnológicas y consultoras.
+                    </p>
+                </div>
+                <div class="card p-6">
+                    <div class="text-orange-500 mb-4">
+                        <svg class="w-16 h-16 mx-auto" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.5 7 3.5V11zm-1-6.5l-4.5 4.5 1.41 1.41L11 7.41V11h2V7.41l2.09 2.09L17 9.49l-4.5-4.5z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Crecimiento Sostenible</h3>
+                    <p class="text-gray-600">
+                        Proyectamos un crecimiento sostenido con un aumento del 20% en ingresos anuales, adaptándonos a la demanda del mercado.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Projects Section (Proyectos Destacados) -->
+    <section id="proyectos" class="py-16 md:py-24 section-bg-gradient">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">Proyectos Destacados</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project Card 1 -->
+                <div class="card p-6">
+                    <!-- [Image of Plataforma E-commerce] -->
+                    <video width="400" style="display: inline-block; margin-right: 5px;" controls autoplay loop muted>
+                        <source src='2.mp4' type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Plataforma E-commerce Integrada</h3>
+                    <p class="text-gray-600 text-sm mb-4">
+                        Desarrollo de una plataforma de comercio electrónico a medida, con gestión de inventario, pasarela de pagos segura y panel de administración intuitivo, mejorando la experiencia de compra del usuario.
+                    </p>
+                    <a href="#contacto" class="text-custom-dark-blue hover:underline font-medium">Ver detalles</a>
+                </div>
+                <!-- Project Card 2 -->
+                <div class="card p-6">
+                    <!-- [Image of Sistema RRHH] -->
+                    <video width="400" style="display: inline-block; margin-right: 5px;" controls autoplay loop muted>
+                        <source src='3.mp4' type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Sistema de Gestión de Recursos Humanos</h3>
+                    <p class="text-gray-600 text-sm mb-4">
+                        Creación de un sistema interno para la automatización de procesos de RRHH, incluyendo gestión de nóminas, control de asistencia y evaluaciones de desempeño, optimizando la eficiencia interna.
+                    </p>
+                    <a href="#contacto" class="text-custom-dark-blue hover:underline font-medium">Ver detalles</a>
+                </div>
+                <!-- Project Card 3 -->
+                <div class="card p-6">
+                    <!-- [Image of App Movil Servicios] -->
+                    <video width="400" style="display: inline-block; margin-right: 5px;" controls autoplay loop muted>
+                        <source src='4.mp4' type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Aplicación Móvil para Reservas de Servicios</h3>
+                    <p class="text-gray-600 text-sm mb-4">
+                        Diseño y desarrollo de una aplicación móvil intuitiva para iOS y Android, que permite a los usuarios reservar y gestionar servicios fácilmente, mejorando la interacción con los clientes.
+                    </p>
+                    <a href="#contacto" class="text-custom-dark-blue hover:underline font-medium">Ver detalles</a>
+                </div>
+                 <!-- Project Card 4 -->
+                <div class="card p-6">
+                    <!-- [Image of Dashboard Analitico] -->
+                    <video width="400" style="display: inline-block; margin-right: 5px;" controls autoplay loop muted>
+                        <source src='5.mp4' type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Dashboard de Análisis de Datos</h3>
+                    <p class="text-gray-600 text-sm mb-4">
+                        Implementación de un dashboard interactivo para la visualización de métricas clave de negocio, facilitando la toma de decisiones basada en datos y el monitoreo de rendimiento.
+                    </p>
+                    <a href="#contacto" class="text-custom-dark-blue hover:underline font-medium">Ver detalles</a>
+                </div>
+                <!-- Project Card 5 -->
+                <div class="card p-6">
+                    <!-- [Image of Integracion API] -->
+                    <video width="400" style="display: inline-block; margin-right: 5px;" controls autoplay loop muted>
+                        <source src='6.mp4' type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Integración de Sistemas vía API</h3>
+                    <p class="text-gray-600 text-sm mb-4">
+                        Desarrollo e integración de APIs personalizadas para conectar diferentes sistemas y plataformas, automatizando flujos de trabajo y mejorando la interoperabilidad de datos.
+                    </p>
+                    <a href="#contacto" class="text-custom-dark-blue hover:underline font-medium">Ver detalles</a>
+                </div>
+                <!-- Project Card 6 -->
+                <div class="card p-6">
+                    <!-- [Image of Gestor Contenido] -->
+                    <video width="400" style="display: inline-block; margin-right: 5px;" controls autoplay loop muted>
+                        <source src='7.mp4' type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Sistema de Gestión de Contenido (CMS)</h3>
+                    <p class="text-gray-600 text-sm mb-4">
+                        Creación de un CMS flexible y fácil de usar para administrar el contenido de sitios web y blogs, permitiendo actualizaciones rápidas y un control total sobre la información publicada.
+                    </p>
+                    <a href="#contacto" class="text-custom-dark-blue hover:underline font-medium">Ver detalles</a>
+                </div>
+                <!-- Project Card 7 -->
+                <div class="card p-6">
+                    <!-- [Image of Consultoria Tecnologica] -->
+                                         <video width="400" style="display: inline-block; margin-right: 5px;" controls autoplay loop muted>
+                        <source src='8.mp4' type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Consultoría y Auditoría Tecnológica</h3>
+                    <p class="text-gray-600 text-sm mb-4">
+                        Servicios de consultoría para evaluar la infraestructura tecnológica existente, identificar oportunidades de mejora y optimizar la inversión en TI, garantizando la alineación con los objetivos de negocio.
+                    </p>
+                    <a href="#contacto" class="text-custom-dark-blue hover:underline font-medium">Ver detalles</a>
+                </div>
+                <!-- Project Card 8 -->
+                <div class="card p-6">
+                    <!-- [Image of CRM Personalizado] -->
+                                         <video width="400" style="display: inline-block; margin-right: 5px;" controls autoplay loop muted>
+                        <source src='9.mp4' type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">CRM Personalizado para Ventas</h3>
+                    <p class="text-gray-600 text-sm mb-4">
+                        Desarrollo de un sistema de gestión de relaciones con clientes (CRM) adaptado a los procesos de ventas, permitiendo un seguimiento eficiente de leads, oportunidades y clientes, mejorando la productividad.
+                    </p>
+                    <a href="#contacto" class="text-custom-dark-blue hover:underline font-medium">Ver detalles</a>
+                </div>
+                <!-- Project Card 9 -->
+                <div class="card p-6">
+                    <!-- [Image of Sistema Inventario] -->
+                                         <video width="400" style="display: inline-block; margin-right: 5px;" controls autoplay loop muted>
+                        <source src='10.mp4' type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Sistema de Gestión de Inventario</h3>
+                    <p class="text-gray-600 text-sm mb-4">
+                        Creación de un sistema robusto para el control y seguimiento del inventario en tiempo real, optimizando la cadena de suministro y reduciendo pérdidas por obsolescencia o desabastecimiento.
+                    </p>
+                    <a href="#contacto" class="text-custom-dark-blue hover:underline font-medium">Ver detalles</a>
+                </div>
+            </div>
+            <div class="text-center mt-12">
+                <p class="text-gray-700 text-lg">
+                    ¿Interesado en conocer más sobre nuestros proyectos?
+                    <a href="#contacto" class="text-custom-dark-blue hover:underline font-medium">Contáctanos</a> para una demostración personalizada.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Team Section -->
+    <section id="nuestro-equipo" class="py-16 md:py-24 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">Nuestro Equipo</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Member Card: Juan Carlos Guerra -->
+                <div class="card p-6 flex flex-col items-center text-center">
+                    <img src="https://placehold.co/120x120/E0E7FF/063B4B?text=JC" alt="Foto de Juan Carlos Guerra" class="rounded-full w-32 h-32 object-cover mb-4 shadow-md">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-1">Juan Carlos Guerra</h3>
+                    <p class="text-custom-dark-blue font-medium mb-2">Líder Técnico</p>
+                    <p class="text-gray-600 text-sm"><a href="mailto:guerramalavejuancarlos@gmail.com" class="hover:underline">guerramalavejuancarlos@gmail.com</a></p>
+                </div>
+                <!-- Member Card: Joserys Romero -->
+                <div class="card p-6 flex flex-col items-center text-center">
+                    <img src="https://placehold.co/120x120/E0E7FF/063B4B?text=JR" alt="Foto de Joserys Romero" class="rounded-full w-32 h-32 object-cover mb-4 shadow-md">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-1">Joserys Romero</h3>
+                    <p class="text-custom-dark-blue font-medium mb-2">Líder de Proyectos</p>
+                    <p class="text-gray-600 text-sm"><a href="mailto:jomaroma22@gmail.com" class="hover:underline">jomaroma22@gmail.com</a></p>
+                </div>
+                <!-- Member Card: Ramon Guerra -->
+                <div class="card p-6 flex flex-col items-center text-center">
+                    <img src="https://placehold.co/120x120/E0E7FF/063B4B?text=RG" alt="Foto de Ramon Guerra" class="rounded-full w-32 h-32 object-cover mb-4 shadow-md">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-1">Ramon Guerra</h3>
+                    <p class="text-custom-dark-blue font-medium mb-2">Talento Humano y Finanzas</p>
+                    <p class="text-gray-600 text-sm"><a href="mailto:ramonguerramalave@gmail.com" class="hover:underline">ramonguerramalave@gmail.com</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dynamic Needs Assessment Section (Diagnóstico Rápido) -->
+    <section id="diagnostico-negocio" class="py-16 md:py-24 bg-custom-dark-blue text-white text-center rounded-lg m-8">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold mb-8">Diagnóstico Rápido: Optimización de Procesos</h2>
+            <p class="text-lg md:text-xl mb-12 max-w-3xl mx-auto">
+                Responde unas sencillas preguntas para que Celenia Systems te proponga las soluciones tecnológicas que tu negocio realmente necesita.
+            </p>
+
+            <div id="quiz-container-negocio" class="bg-white p-8 rounded-lg shadow-xl text-gray-800 max-w-xl mx-auto">
+                <div id="q-negocio-1" class="question-block-negocio mb-6">
+                    <p class="text-xl font-semibold mb-4">1. ¿Sus procesos internos son mayormente manuales o basados en hojas de cálculo (Excel)?</p>
+                    <div class="flex flex-col md:flex-row justify-center gap-4">
+                        <div class="quiz-option">
+                            <input type="radio" id="qn1-yes" name="qn1" value="yes">
+                            <label for="qn1-yes" class="text-lg">Sí</label>
+                        </div>
+                        <div class="quiz-option">
+                            <input type="radio" id="qn1-no" name="qn1" value="no">
+                            <label for="qn1-no" class="text-lg">No</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="q-negocio-2" class="question-block-negocio mb-6 hidden">
+                    <p class="text-xl font-semibold mb-4">2. ¿Su empresa no cuenta con una presencia digital sólida o una página web actualizada?</p>
+                    <div class="flex flex-col md:flex-row justify-center gap-4">
+                        <div class="quiz-option">
+                            <input type="radio" id="qn2-yes" name="qn2" value="yes">
+                            <label for="qn2-yes" class="text-lg">Sí</label>
+                        </div>
+                        <div class="quiz-option">
+                            <input type="radio" id="qn2-no" name="qn2" value="no">
+                            <label for="qn2-no" class="text-lg">No</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="q-negocio-3" class="question-block-negocio mb-6 hidden">
+                    <p class="text-xl font-semibold mb-4">3. ¿Necesita mejorar su estrategia de redes sociales o no las gestiona activamente?</p>
+                    <div class="flex flex-col md:flex-row justify-center gap-4">
+                        <div class="quiz-option">
+                            <input type="radio" id="qn3-yes" name="qn3" value="yes">
+                            <label for="qn3-yes" class="text-lg">Sí</label>
+                        </div>
+                        <div class="quiz-option">
+                            <input type="radio" id="qn3-no" name="qn3" value="no">
+                            <label for="qn3-no" class="text-lg">No</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="q-negocio-4" class="question-block-negocio mb-6 hidden">
+                    <p class="text-xl font-semibold mb-4">4. ¿Su equipo necesita capacitación en nuevas tecnologías o transformación digital?</p>
+                    <div class="flex flex-col md:flex-row justify-center gap-4">
+                        <div class="quiz-option">
+                            <input type="radio" id="qn4-yes" name="qn4" value="yes">
+                            <label for="qn4-yes" class="text-lg">Sí</label>
+                        </div>
+                        <div class="quiz-option">
+                            <input type="radio" id="qn4-no" name="qn4" value="no">
+                            <label for="qn4-no" class="text-lg">No</label>
+                        </div>
+                    </div>
+                </div>
+
+                <button id="submit-quiz-negocio" class="btn-primary mt-6 hidden">Ver Recomendaciones de Negocio</button>
+                <button id="restart-quiz-negocio" class="btn-primary mt-6 hidden bg-gray-500 hover:bg-gray-700">Reiniciar Diagnóstico Negocio</button>
+
+                <div id="quiz-results-negocio" class="mt-8 text-left hidden">
+                    <h3 class="text-2xl font-bold text-gradient mb-4">Recomendaciones para su Negocio:</h3>
+                    <ul class="list-disc list-inside text-gray-700 space-y-2" id="results-list-negocio">
+                        <!-- Results will be injected here by JavaScript -->
+                    </ul>
+                    <p class="text-gray-700 mt-6">
+                        ¿Listo para llevar estas soluciones a la realidad? <a href="#contacto" class="text-custom-dark-blue hover:underline font-medium">Contáctenos</a> hoy mismo.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- New Dynamic Communication Needs Assessment Section (Diagnóstico Comunicación) -->
+    <section id="diagnostico-comunicacion" class="py-16 md:py-24 bg-purple-700 text-white text-center rounded-lg m-8">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold mb-8">Diagnóstico Rápido: Canales de Comunicación</h2>
+            <p class="text-lg md:text-xl mb-12 max-w-3xl mx-auto">
+                Descubra cómo Celenia Systems puede ayudarle a optimizar la comunicación de su negocio en sus medios favoritos.
+            </p>
+
+            <div id="quiz-container-comunicacion" class="bg-white p-8 rounded-lg shadow-xl text-gray-800 max-w-xl mx-auto">
+                <div id="q-comunicacion-1" class="question-block-comunicacion mb-6">
+                    <p class="text-xl font-semibold mb-4">1. ¿Quiere fortalecer su presencia y comunicación a través de redes sociales (Instagram, Facebook, X, TikTok)?</p>
+                    <div class="flex flex-col md:flex-row justify-center gap-4">
+                        <div class="quiz-option">
+                            <input type="radio" id="qc1-yes" name="qc1" value="yes">
+                            <label for="qc1-yes" class="text-lg">Sí</label>
+                        </div>
+                        <div class="quiz-option">
+                            <input type="radio" id="qc1-no" name="qc1" value="no">
+                            <label for="qc1-no" class="text-lg">No</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="q-comunicacion-2" class="question-block-comunicacion mb-6 hidden">
+                    <p class="text-xl font-semibold mb-4">2. ¿Busca mejorar la interacción con sus clientes a través de su página web o correo electrónico?</p>
+                    <div class="flex flex-col md:flex-row justify-center gap-4">
+                        <div class="quiz-option">
+                            <input type="radio" id="qc2-yes" name="qc2" value="yes">
+                            <label for="qc2-yes" class="text-lg">Sí</label>
+                        </div>
+                        <div class="quiz-option">
+                            <input type="radio" id="qc2-no" name="qc2" value="no">
+                            <label for="qc2-no" class="text-lg">No</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="q-comunicacion-3" class="question-block-comunicacion mb-6 hidden">
+                    <p class="text-xl font-semibold mb-4">3. ¿Le gustaría ofrecer contenido educativo o talleres a sus clientes de forma online o presencial?</p>
+                    <div class="flex flex-col md:flex-row justify-center gap-4">
+                        <div class="quiz-option">
+                            <input type="radio" id="qc3-yes" name="qc3" value="yes">
+                            <label for="qc3-yes" class="text-lg">Sí</label>
+                        </div>
+                        <div class="quiz-option">
+                            <input type="radio" id="qc3-no" name="qc3" value="no">
+                            <label for="qc3-no" class="text-lg">No</label>
+                        </div>
+                    </div>
+                </div>
+
+                <button id="submit-quiz-comunicacion" class="btn-primary mt-6 hidden bg-purple-500 hover:bg-purple-700">Ver Recomendaciones de Comunicación</button>
+                <button id="restart-quiz-comunicacion" class="btn-primary mt-6 hidden bg-gray-500 hover:bg-gray-700">Reiniciar Diagnóstico Comunicación</button>
+
+                <div id="quiz-results-comunicacion" class="mt-8 text-left hidden">
+                    <h3 class="text-2xl font-bold text-gradient mb-4">Recomendaciones para su Comunicación:</h3>
+                    <ul class="list-disc list-inside text-gray-700 space-y-2" id="results-list-comunicacion">
+                        <!-- Results will be injected here by JavaScript -->
+                    </ul>
+                    <p class="text-gray-700 mt-6">
+                        ¿Listo para llevar estas soluciones a la realidad? <a href="#contacto" class="text-custom-dark-blue hover:underline font-medium">Contáctenos</a> hoy mismo.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action / Contact Section -->
+    <section id="contacto" class="py-16 md:py-24 bg-custom-dark-blue text-white text-center rounded-lg m-8">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">¿Listo para Impulsar tu Negocio?</h2>
+            <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto">
+                Te invitamos a ser parte de esta emocionante aventura y a explorar juntos las posibilidades que la tecnología puede ofrecer a tu negocio. Contáctanos hoy mismo para discutir tus necesidades y cómo Celenia Systems puede ayudarte a alcanzar tus objetivos de transformación digital.
+            </p>
+            <div class="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-8 mb-8">
+                <p class="text-2xl font-semibold">
+                    Correo: <a href="mailto:celeniasystems@gmail.com" class="underline hover:text-custom-light-blue">celeniasystems@gmail.com</a>
+                </p>
+                <!-- Assuming a placeholder for phone number as it's not in the doc -->
+                <p class="text-2xl font-semibold">
+                    Teléfono: <a href="tel:[Tu Teléfono]" class="underline hover:text-custom-light-blue">[Tu Teléfono]</a>
+                </p>
+            </div>
+
+            <div class="mb-8">
+                <h3 class="text-xl font-bold mb-4">Nuestros Contactos Principales:</h3>
+                <div class="flex flex-col md:flex-row justify-center space-y-2 md:space-y-0 md:space-x-8 text-lg">
+                    <p>Juan Carlos Guerra: <a href="mailto:guerramalavejuancarlos@gmail.com" class="underline hover:text-custom-light-blue">guerramalavejuancarlos@gmail.com</a></p>
+                    <p>Ramon Guerra: <a href="mailto:ramonguerramalave@gmail.com" class="underline hover:text-custom-light-blue">ramonguerramalave@gmail.com</a></p>
+                    <p>Joserys Romero: <a href="mailto:jomaroma22@gmail.com" class="underline hover:text-custom-light-blue">jomaroma22@gmail.com</a></p>
+                </div>
+            </div>
+
+            <p class="text-xl font-semibold mt-4">
+                Operamos en: <span class="text-custom-light-blue">Caracas, Venezuela</span> y <span class="text-custom-light-blue">Panamá</span>
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <div class="flex justify-center space-x-6 mb-4">
+                <a href="#" class="hover:text-custom-light-blue transition duration-300">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Placeholder for Instagram icon -->
+                        <path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4c0 3.2-2.6 5.8-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8C2 4.6 4.6 2 7.8 2zm-.2 2.7c-2.4 0-4.3 1.9-4.3 4.3v8.4c0 2.4 1.9 4.3 4.3 4.3h8.4c2.4 0 4.3-1.9 4.3-4.3V7.8c0-2.4-1.9-4.3-4.3-4.3H7.6zm10.7 2.4a1.2 1.2 0 100 2.4 1.2 1.2 0 000-2.4zm-4.3 2.5c-2.4 0-4.3 1.9-4.3 4.3s1.9 4.3 4.3 4.3 4.3-1.9 4.3-4.3-1.9-4.3-4.3-4.3zm0 2.2a2.1 2.1 0 110 4.2 2.1 2.1 0 010-4.2z"/>
+                    </svg>
+                </a>
+                <a href="#" class="hover:text-custom-light-blue transition duration-300">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Placeholder for Facebook icon -->
+                        <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.91 9-5.35 9-10.95z"/>
+                    </svg>
+                </a>
+                <a href="#" class="hover:text-custom-light-blue transition duration-300">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Placeholder for X (Twitter) icon -->
+                        <path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.39-.83.49-1.76.85-2.75 1.04C18.27 4.15 17.06 3.5 15.6 3.5c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.56 8.75 5.66 7.1 3.68 4.67c-.36.62-.56 1.35-.56 2.12 0 1.49.75 2.81 1.91 3.56-.7-.02-1.3-.21-1.85-.51v.05c0 2.08 1.48 3.82 3.44 4.21-.36.1-.73.15-1.12.15-.27 0-.53-.03-.78-.07.55 1.7 2.14 2.95 4.03 2.98-1.48 1.16-3.34 1.85-5.37 1.85-.35 0-.69-.02-1.03-.06C3.17 20.32 5.34 21 7.6 21c7.9 0 12.24-6.57 12.24-12.25 0-.19-.01-.38-.01-.57.84-.6 1.56-1.36 2.14-2.22z"/>
+                    </svg>
+                </a>
+            </div>
+            <p class="text-gray-400 text-sm">&copy; 2025 Celenia Systems. Todos los derechos reservados.</p>
+                        <div align="center" class="mb-8">
+                <!-- Company logo -->
+                <img src="logo.png" alt="Celenia Systems" style="width: 300px; height: auto;">
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                // Close mobile menu if open
+                if (document.getElementById('mobile-menu').classList.contains('flex')) {
+                    document.getElementById('mobile-menu').classList.remove('flex');
+                    document.getElementById('mobile-menu').classList.add('hidden');
+                }
+            });
+        });
+
+        // Toggle mobile menu visibility
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('flex');
+        });
+
+        // Dynamic Needs Assessment (Business Quiz) Logic
+        const quizQuestionsNegocio = [
+            {
+                id: 'q-negocio-1',
+                question: '¿Sus procesos internos son mayormente manuales o basados en hojas de cálculo (Excel)?',
+                solution: 'Le recomendamos nuestro servicio de <a href="#servicios" class="text-custom-dark-blue underline">Desarrollo de Sistema Personalizado</a> para automatizar sus operaciones y mejorar la eficiencia.'
+            },
+            {
+                id: 'q-negocio-2',
+                question: '¿Su empresa no cuenta con una presencia digital sólida o una página web actualizada?',
+                solution: 'Le ofrecemos nuestro servicio de <a href="#servicios" class="text-custom-dark-blue underline">Desarrollo de Página Web</a> para establecer una presencia profesional en línea.'
+            },
+            {
+                id: 'q-negocio-3',
+                question: '¿Necesita mejorar su estrategia de redes sociales o no las gestiona activamente?',
+                solution: 'Nuestros <a href="#servicios" class="text-custom-dark-blue underline">Planes de Marketing Digital y Gestión de Redes Sociales</a> le ayudarán a conectar con su audiencia y potenciar su marca.'
+            },
+            {
+                id: 'q-negocio-4',
+                question: '¿Su equipo necesita capacitación en nuevas tecnologías o transformación digital?',
+                solution: 'Descubra nuestros <a href="#servicios" class="text-custom-dark-blue underline">Cursos y Talleres (presenciales y virtuales)</a> diseñados para capacitar a su personal.'
+            }
+        ];
+
+        let currentQuestionIndexNegocio = 0;
+        const questionBlocksNegocio = document.querySelectorAll('.question-block-negocio');
+        const submitButtonNegocio = document.getElementById('submit-quiz-negocio');
+        const restartButtonNegocio = document.getElementById('restart-quiz-negocio');
+        const quizResultsNegocio = document.getElementById('quiz-results-negocio');
+        const resultsListNegocio = document.getElementById('results-list-negocio');
+        const userNeedsNegocio = [];
+
+        function showQuestionNegocio(index) {
+            questionBlocksNegocio.forEach((block, i) => {
+                block.classList.add('hidden');
+            });
+            if (questionBlocksNegocio[index]) {
+                questionBlocksNegocio[index].classList.remove('hidden');
+            } else {
+                showResultsNegocio();
+            }
+        }
+
+        function handleAnswerNegocio(questionIndex, answer) {
+            if (answer === 'yes') {
+                userNeedsNegocio.push(quizQuestionsNegocio[questionIndex].solution);
+            }
+            currentQuestionIndexNegocio++;
+            showQuestionNegocio(currentQuestionIndexNegocio);
+
+            if (currentQuestionIndexNegocio >= quizQuestionsNegocio.length) {
+                submitButtonNegocio.classList.remove('hidden');
+            }
+        }
+
+        function showResultsNegocio() {
+            questionBlocksNegocio.forEach(block => block.classList.add('hidden'));
+            submitButtonNegocio.classList.add('hidden');
+            quizResultsNegocio.classList.remove('hidden');
+            restartButtonNegocio.classList.remove('hidden');
+            resultsListNegocio.innerHTML = '';
+
+            if (userNeedsNegocio.length === 0) {
+                resultsListNegocio.innerHTML = '<li class="text-gray-700">Parece que su negocio ya está en un excelente camino digital. ¡Felicidades! Si tiene alguna otra necesidad, no dude en <a href="#contacto" class="text-custom-dark-blue underline">contactarnos</a>.</li>';
+            } else {
+                userNeedsNegocio.forEach(need => {
+                    const listItem = document.createElement('li');
+                    listItem.classList.add('text-gray-700');
+                    listItem.innerHTML = need;
+                    resultsListNegocio.appendChild(listItem);
+                });
+            }
+        }
+
+        function resetQuizNegocio() {
+            currentQuestionIndexNegocio = 0;
+            userNeedsNegocio.length = 0;
+            quizResultsNegocio.classList.add('hidden');
+            submitButtonNegocio.classList.add('hidden');
+            restartButtonNegocio.classList.add('hidden');
+
+            document.querySelectorAll('#quiz-container-negocio input[type="radio"]').forEach(radio => {
+                radio.checked = false;
+            });
+            showQuestionNegocio(currentQuestionIndexNegocio);
+        }
+
+        questionBlocksNegocio.forEach((block, index) => {
+            block.querySelectorAll('input[type="radio"]').forEach(radio => {
+                radio.addEventListener('change', (event) => {
+                    handleAnswerNegocio(index, event.target.value);
+                });
+            });
+        });
+
+        submitButtonNegocio.addEventListener('click', showResultsNegocio);
+        restartButtonNegocio.addEventListener('click', resetQuizNegocio);
+        showQuestionNegocio(currentQuestionIndexNegocio);
+
+
+        // Dynamic Needs Assessment (Communication Quiz) Logic
+        const quizQuestionsComunicacion = [
+            {
+                id: 'q-comunicacion-1',
+                question: '¿Quiere fortalecer su presencia y comunicación a través de redes sociales (Instagram, Facebook, X, TikTok)?',
+                solution: 'Le recomendamos nuestros <a href="#servicios" class="text-custom-dark-blue underline">Planes de Marketing Digital y Gestión de Redes Sociales</a> para potenciar su alcance.'
+            },
+            {
+                id: 'q-comunicacion-2',
+                question: '¿Busca mejorar la interacción con sus clientes a través de su página web o correo electrónico?',
+                solution: 'Le ofrecemos nuestro servicio de <a href="#servicios" class="text-custom-dark-blue underline">Desarrollo de Página Web</a> para optimizar su comunicación digital directa.'
+            },
+            {
+                id: 'q-comunicacion-3',
+                question: '¿Le gustaría ofrecer contenido educativo o talleres a sus clientes de forma online o presencial?',
+                solution: 'Nuestros <a href="#servicios" class="text-custom-dark-blue underline">Cursos y Talleres (presenciales y virtuales)</a> son ideales para educar y conectar con su audiencia.'
+            }
+        ];
+
+        let currentQuestionIndexComunicacion = 0;
+        const questionBlocksComunicacion = document.querySelectorAll('.question-block-comunicacion');
+        const submitButtonComunicacion = document.getElementById('submit-quiz-comunicacion');
+        const restartButtonComunicacion = document.getElementById('restart-quiz-comunicacion');
+        const quizResultsComunicacion = document.getElementById('quiz-results-comunicacion');
+        const resultsListComunicacion = document.getElementById('results-list-comunicacion');
+        const userNeedsComunicacion = [];
+
+        function showQuestionComunicacion(index) {
+            questionBlocksComunicacion.forEach((block, i) => {
+                block.classList.add('hidden');
+            });
+            if (questionBlocksComunicacion[index]) {
+                questionBlocksComunicacion[index].classList.remove('hidden');
+            } else {
+                showResultsComunicacion();
+            }
+        }
+
+        function handleAnswerComunicacion(questionIndex, answer) {
+            if (answer === 'yes') {
+                userNeedsComunicacion.push(quizQuestionsComunicacion[questionIndex].solution);
+            }
+            currentQuestionIndexComunicacion++;
+            showQuestionComunicacion(currentQuestionIndexComunicacion);
+
+            if (currentQuestionIndexComunicacion >= quizQuestionsComunicacion.length) {
+                submitButtonComunicacion.classList.remove('hidden');
+            }
+        }
+
+        function showResultsComunicacion() {
+            questionBlocksComunicacion.forEach(block => block.classList.add('hidden'));
+            submitButtonComunicacion.classList.add('hidden');
+            quizResultsComunicacion.classList.remove('hidden');
+            restartButtonComunicacion.classList.remove('hidden');
+            resultsListComunicacion.innerHTML = '';
+
+            if (userNeedsComunicacion.length === 0) {
+                resultsListComunicacion.innerHTML = '<li class="text-gray-700">¡Excelente! Parece que su estrategia de comunicación digital está en buen camino. Si desea exploras nuevas vías, no dude en <a href="#contacto" class="text-custom-dark-blue underline">contactarnos</a>.</li>';
+            } else {
+                userNeedsComunicacion.forEach(need => {
+                    const listItem = document.createElement('li');
+                    listItem.classList.add('text-gray-700');
+                    listItem.innerHTML = need;
+                    resultsListComunicacion.appendChild(listItem);
+                });
+            }
+        }
+
+        function resetQuizComunicacion() {
+            currentQuestionIndexComunicacion = 0;
+            userNeedsComunicacion.length = 0;
+            quizResultsComunicacion.classList.add('hidden');
+            submitButtonComunicacion.classList.add('hidden');
+            restartButtonComunicacion.classList.add('hidden');
+
+            document.querySelectorAll('#quiz-container-comunicacion input[type="radio"]').forEach(radio => {
+                radio.checked = false;
+            });
+            showQuestionComunicacion(currentQuestionIndexComunicacion);
+        }
+
+        questionBlocksComunicacion.forEach((block, index) => {
+            block.querySelectorAll('input[type="radio"]').forEach(radio => {
+                radio.addEventListener('change', (event) => {
+                    handleAnswerComunicacion(index, event.target.value);
+                });
+            });
+        });
+
+        submitButtonComunicacion.addEventListener('click', showResultsComunicacion);
+        restartButtonComunicacion.addEventListener('click', resetQuizComunicacion);
+        showQuestionComunicacion(currentQuestionIndexComunicacion);
+    </script>
+</body>
+</html>
